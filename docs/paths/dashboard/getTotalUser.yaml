@@ -1,0 +1,23 @@
+get:
+  tags:
+    - User # Grouped under User-related endpoints
+  summary: Get total number of users
+  description: Returns the total count of users in the database.
+  responses:
+    "200":
+      description: Total user count retrieved successfully
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/dashboard/userSchema.yaml#/TotalUserResponse" # Reference to TotalUserResponse schema
+
+    "500":
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Internal server error" # Generic error message

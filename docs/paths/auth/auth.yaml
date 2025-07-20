@@ -1,0 +1,23 @@
+post:
+  tags:
+    - Auth # Group under "Auth" tag
+  summary: User login # Short summary of endpoint purpose
+  description: > # Detailed description
+    Authenticate a user and return a token if credentials are valid.
+  requestBody:
+    required: true # Request body is required
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/auth/authSchema.yaml#/LoginInput" # Reference to LoginInput schema
+  responses:
+    "200":
+      description: Successful login, returns tokens and user info
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/auth/authSchema.yaml#/LoginResponse" # Reference to LoginResponse schema
+    "401":
+      description: Invalid credentials, e.g. wrong email or password
+    "400":
+      description: Missing required fields in request body (email or password)

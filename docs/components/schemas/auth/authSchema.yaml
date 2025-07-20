@@ -1,0 +1,42 @@
+LoginInput:
+  type: object
+  required:
+    - email # Email is required for login
+    - password # Password is required for login
+  properties:
+    email:
+      type: string
+      format: email
+      example: admin@example.com # Example of a valid email address
+    password:
+      type: string
+      format: password
+      example: 123456 # Example of a password
+
+LoginResponse:
+  type: object
+  properties:
+    accessToken:
+      type: string
+      description: JWT access token for authentication
+      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... # Example JWT token
+    refreshToken:
+      type: string
+      description: Token used to refresh the access token
+      example: dGhpcyBpcyBhIHJlZnJlc2ggdG9rZW4uLi4= # Example refresh token
+    user:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique user identifier
+          example: 687a1bc7d660cb9f375c442b # Example user ID
+        name:
+          type: string
+          description: Full name of the user
+          example: John Doe # Example user name
+        email:
+          type: string
+          format: email
+          description: User's email address
+          example: johndoe@example.com # Example user email

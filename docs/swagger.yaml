@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: API Documentation
+  version: 1.0.0
+
+servers:
+  - url: /api/
+    description: Development server
+
+security:
+  - BearerAuth: [] # Global security scheme applied to all paths unless overridden
+
+tags:
+  - name: User
+    description: User API
+  - name: Auth
+    description: Authentication related endpoints
+
+paths:
+  /users:
+    $ref: "./paths/dashboard/users.yaml" # List and create users
+  /users/get-total-users:
+    $ref: "./paths/dashboard/getTotalUser.yaml" # Get total user count
+  /users/{id}:
+    $ref: "./paths/dashboard/byid/userById.yaml" # Get, update, delete user by ID
+  /auth/login:
+    $ref: "./paths/auth/auth.yaml" # Login endpoint
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT # JWT Bearer token auth
+
+  schemas:
+    User:
+      $ref: "./components/schemas/dashboard/userSchema.yaml#/User"
+    UserInput:
+      $ref: "./components/schemas/dashboard/userSchema.yaml#/UserInput"
+    TotalUserResponse:
+      $ref: "./components/schemas/dashboard/userSchema.yaml#/TotalUserResponse"
+    LoginInput:
+      $ref: "./components/schemas/auth/authSchema.yaml#/LoginInput"

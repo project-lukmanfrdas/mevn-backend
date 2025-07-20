@@ -1,0 +1,29 @@
+get:
+  tags: [User] # Endpoint grouped under User-related APIs
+  summary: Get all users # Brief summary of endpoint purpose
+  responses:
+    "200":
+      description: List of users # Success response description
+      content:
+        application/json:
+          schema:
+            type: array # Response is an array of users
+            items:
+              $ref: "../../components/schemas/dashboard/userSchema.yaml#/User" # Each item follows User schema
+
+post:
+  tags: [User]
+  summary: Create a new user # Endpoint for creating a user
+  requestBody:
+    required: true # Request body is required
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/dashboard/userSchema.yaml#/UserInput" # Input schema for creating user
+  responses:
+    "201":
+      description: User created # Success response after creation
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/dashboard/userSchema.yaml#/User" # Created user object returned

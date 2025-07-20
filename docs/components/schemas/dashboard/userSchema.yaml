@@ -1,0 +1,46 @@
+User:
+  type: object
+  properties:
+    id:
+      type: string
+      # Unique identifier for the user
+    name:
+      type: string
+      # Full name of the user
+    email:
+      type: string
+      # User's email address
+    password:
+      type: string
+      format: password
+      # User's password (should be handled securely, usually not returned in responses)
+
+UserInput:
+  type: object
+  required:
+    - name      # Name is required when creating/updating a user
+    - email     # Email is required and should be unique
+    - password  # Password is required for new users
+  properties:
+    name:
+      type: string
+      example: Johns
+      # Example full name
+    email:
+      type: string
+      format: email
+      example: john@email.com
+      # Example valid email address
+    password:
+      type: string
+      format: password
+      example: john123
+      # Example password (should be strong)
+
+TotalUserResponse:
+  type: object
+  properties:
+    data:
+      type: integer
+      example: 123
+      # Total number of users in the system
